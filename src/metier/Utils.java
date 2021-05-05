@@ -1,3 +1,5 @@
+package metier;
+
 public class Utils{
     public String HashPassword(String pass){
         
