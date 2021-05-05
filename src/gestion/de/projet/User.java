@@ -11,7 +11,13 @@ public class User{
         this.id = id;
     }
     public void Copy(User user){
-
+        this.firstName = user.firstName;
+        this.id = user.id;
+        this.isChief = user.isChief;
+        this.isConnected = false;
+        this.lastName = user.lastName;
+        this.login = user.login;
+        this.passwordHash = user.passwordHash;
     }
     public void Disconnect(){
         
