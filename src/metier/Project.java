@@ -1,7 +1,7 @@
 package metier;
 
 import gestion.de.projet.ProjectsWindow;
-import ihm.ProjectWindow;
+import gestion.de.projet.ProjectWindow;
 
 public class Project {
 	/**private String name;
