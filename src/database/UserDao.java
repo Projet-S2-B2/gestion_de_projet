@@ -16,6 +16,7 @@ public class UserDao {
 	 * @return L'utilisateur chargé depuis la BD.
 	 */
 	public User Read(String aLogin, String aPassHash) throws DaoError {
+            return null;
 		
 	}
 
@@ -32,6 +33,7 @@ public class UserDao {
 	 * @return un ensemble d'utilisateurs qui sont des techniciens
 	 */
 	public Tech[] ListTechs() {
+            return null;
 		
 	}
 }
