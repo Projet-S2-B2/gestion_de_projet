@@ -8,12 +8,9 @@ package database;
 public class BadPasswordError extends DaoError {
 
     public BadPasswordError() {
-        super();
+        super("Mauvais mot de passe!");
     }
 
-    public BadPasswordError(String message) {
-        super(message);
-    }
     
     
     
