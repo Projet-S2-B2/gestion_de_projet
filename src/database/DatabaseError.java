@@ -7,11 +7,8 @@ package database;
 public class DatabaseError extends DaoError {
 
     public DatabaseError() {
-        super();
+        super("Erreur au niveau de la base de donnée");
     }
 
-    public DatabaseError(String message) {
-        super(message);
-    }
     
 }
