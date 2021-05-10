@@ -8,11 +8,7 @@ package database;
 public class BadUserError extends DaoError {
 
     public BadUserError() {
-        super();
+        super("Mauvais utilisateur!");
     }
 
-    public BadUserError(String message) {
-        super(message);
-    }
-    
 }
