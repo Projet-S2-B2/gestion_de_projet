@@ -41,34 +41,34 @@ public class Acceuil extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/fichierweb.png"))); // NOI18N
         getContentPane().add(jButton1);
-        jButton1.setBounds(190, 260, 240, 220);
+        jButton1.setBounds(210, 250, 240, 220);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/technicienweb.png"))); // NOI18N
         getContentPane().add(jButton2);
-        jButton2.setBounds(520, 240, 250, 240);
+        jButton2.setBounds(530, 240, 250, 240);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/profileweb.png"))); // NOI18N
         getContentPane().add(jButton3);
-        jButton3.setBounds(190, 490, 230, 280);
+        jButton3.setBounds(390, 490, 230, 280);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/discoweb.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/disco.png"))); // NOI18N
         getContentPane().add(jButton4);
-        jButton4.setBounds(510, 500, 260, 270);
+        jButton4.setBounds(960, 0, 60, 70);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestion/de/projet/bouton-login.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/bouton-login-accueil.png"))); // NOI18N
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton5MouseEntered(evt);
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(870, 10, 140, 60);
+        jButton5.setBounds(-10, 10, 170, 50);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/acceuilweb.png"))); // NOI18N
         getContentPane().add(background);
         background.setBounds(0, 0, 1024, 800);
 
-        setSize(new java.awt.Dimension(1039, 840));
+        setSize(new java.awt.Dimension(1045, 840));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
