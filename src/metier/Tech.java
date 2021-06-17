@@ -25,4 +25,8 @@ public class Tech extends User {
 	public Vector<Skill> GetSkills() {
 		return this.skills;
 	}
+        
+        public void addSkill(Skill sk) {
+            this.skills.add(sk);
+        }
 }

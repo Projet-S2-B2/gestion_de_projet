@@ -1,5 +1,6 @@
 package metier;
 
+import gestion.de.projet.ProjectStatus;
 import gestion.de.projet.ProjectsWindow;
 import gestion.de.projet.ProjectWindow;
 
@@ -24,6 +25,8 @@ public class Project {
 	 * Temps estimé du projet en jours (1 jour = 7h de travail)
 	 */
 	private float estimatedDurationDays;
+        
+        private ProjectStatus status;
 	/**
 	 * /**
 	 *  * liste les projets existants
@@ -67,6 +70,14 @@ public class Project {
 	public int getFinalDuration() {
 		return this.finalDuration;
 	}
+        
+        public ProjectStatus getStatut() {
+            return status;
+        }
+       
+        public void setStatut(ProjectStatus st) {
+            status = st;
+        }
 
 	/*public void setStatus(ProjectStatus aStatus) {
 		this.status = aStatus;

@@ -5,6 +5,14 @@
  */
 package gestion.de.projet;
 
+import database.UserDao;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import metier.Project;
+import metier.Tech;
+
 /**
  *
  * @author Aurélie
@@ -16,6 +24,11 @@ public class TechsWindow extends javax.swing.JFrame {
      */
     public TechsWindow() {
         initComponents();
+        try {
+            start();
+        } catch (SQLException ex) {
+            Logger.getLogger(TechsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,6 +40,9 @@ public class TechsWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         background = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -34,6 +50,34 @@ public class TechsWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("View tech");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 750, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nom", "Prenom", "Cout Horaire", "Grade"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 940, 510));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/Techs.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
@@ -46,6 +90,13 @@ public class TechsWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UserDao udao = new UserDao();
+        setVisible(false);
+        Tech_Skills.main(null, udao.ListTechs()[jTable1.getSelectedRow()]);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,10 +133,21 @@ public class TechsWindow extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void start() throws SQLException {
+        UserDao udao = new UserDao();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (Tech pj : udao.ListTechs()) {
+            model.addRow(new Object[]{pj.getFirstName(), pj.getLastName(), "unknow", "unknow"});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

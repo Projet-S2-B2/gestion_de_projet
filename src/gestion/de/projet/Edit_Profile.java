@@ -5,6 +5,8 @@
  */
 package gestion.de.projet;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Aurélie
@@ -74,6 +76,11 @@ public class Edit_Profile extends javax.swing.JFrame {
         Cancel.setBounds(640, 620, 170, 70);
 
         Validate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/validate.png"))); // NOI18N
+        Validate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValidateActionPerformed(evt);
+            }
+        });
         getContentPane().add(Validate);
         Validate.setBounds(240, 620, 170, 70);
 
@@ -92,6 +99,14 @@ public class Edit_Profile extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void ValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidateActionPerformed
+        ProjectDao projectDao = new ProjectDao();
+        String slogin = login.getText();
+        String sname = jTextField1.getText();
+        String spass = Arrays.toString(jPasswordField1.getPassword());
+        // projectDao.Update();
+    }//GEN-LAST:event_ValidateActionPerformed
 
     /**
      * @param args the command line arguments

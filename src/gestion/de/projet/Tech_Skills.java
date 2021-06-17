@@ -5,17 +5,27 @@
  */
 package gestion.de.projet;
 
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import metier.Project;
+import metier.Skill;
+import metier.Tech;
+
 /**
  *
  * @author Aurélie
  */
 public class Tech_Skills extends javax.swing.JFrame {
 
+    private Tech tech;
+    
     /**
      * Creates new form Tech_Skills
      */
-    public Tech_Skills() {
+    public Tech_Skills(Tech tc) {
         initComponents();
+        tech = tc;
+        start();
     }
 
     /**
@@ -27,12 +37,25 @@ public class Tech_Skills extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         techText = new javax.swing.JTextField();
-        skillsText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nom", "Level"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 890, 370));
 
         techText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         techText.setBorder(null);
@@ -44,17 +67,6 @@ public class Tech_Skills extends javax.swing.JFrame {
         });
         getContentPane().add(techText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 560, 50));
 
-        skillsText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        skillsText.setToolTipText("");
-        skillsText.setBorder(null);
-        skillsText.setOpaque(false);
-        skillsText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                skillsTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(skillsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 870, 360));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/Tech-skills.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
@@ -65,14 +77,10 @@ public class Tech_Skills extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_techTextActionPerformed
 
-    private void skillsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skillsTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_skillsTextActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[], Tech techer) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -99,14 +107,25 @@ public class Tech_Skills extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tech_Skills().setVisible(true);
+                new Tech_Skills(techer).setVisible(true);
             }
         });
+    }
+    
+    public void start() {
+        Tech t = tech;
+        String name = t.getFirstName().concat(" ").concat(t.getLastName());
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        techText.setText(name);
+        for (Skill sk : t.GetSkills()) {
+            model.addRow(new Object[]{sk.getName(), sk.getLevel()});
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField skillsText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField techText;
     // End of variables declaration//GEN-END:variables
 }

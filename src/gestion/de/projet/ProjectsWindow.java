@@ -5,6 +5,12 @@
  */
 package gestion.de.projet;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import metier.Project;
+
 /**
  *
  * @author Aurélie
@@ -16,6 +22,11 @@ public class ProjectsWindow extends javax.swing.JFrame {
      */
     public ProjectsWindow() {
         initComponents();
+        try {
+            start();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,6 +38,8 @@ public class ProjectsWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -34,6 +47,27 @@ public class ProjectsWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 800));
         getContentPane().setLayout(null);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nom", "Durée estimée", "Statut"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(42, 222, 920, 400);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/modify.png"))); // NOI18N
         getContentPane().add(jButton1);
@@ -86,10 +120,20 @@ public class ProjectsWindow extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void start() throws SQLException {
+        ProjectDao pdao = new ProjectDao();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (Project pj : pdao.ListAll()) {
+            model.addRow(new Object[]{pj.getID(), pj.getName(), pj.getEstimatedDurationMinutes(), pj.getStatut()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,6 +40,11 @@ public class Acceuil extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/fichierweb.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(210, 250, 240, 220);
 
@@ -48,10 +53,20 @@ public class Acceuil extends javax.swing.JFrame {
         jButton2.setBounds(530, 240, 250, 240);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/profileweb.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
         jButton3.setBounds(390, 490, 230, 280);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gestion_de_projet/images/disco.png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton4MousePressed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(960, 0, 60, 70);
 
@@ -75,6 +90,22 @@ public class Acceuil extends javax.swing.JFrame {
     private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5MouseEntered
+
+    private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MousePressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        Edit_Profile.main(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        ProjectsWindow.main(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
